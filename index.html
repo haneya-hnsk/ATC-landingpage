@@ -519,33 +519,52 @@
         /* --- Penyesuaian Responsif Layar Kecil (Mobile) --- */
         @media (max-width: 768px) {
             .tabs-wrapper {
-                padding: 0 8px;
+                padding: 0 6px;
             }
 
             .tabs-wrapper.is-sticky {
                 top: 72px;
             }
+
+            .tabs-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 6px;
+                padding: 6px;
+            }
+
+            .tab-btn {
+                min-height: 60px;
+                padding: 8px 4px;
+                font-size: 0.62rem;
+                gap: 4px;
+                flex-direction: column;
+                white-space: normal;
+                line-height: 1.15;
+                word-break: break-word;
+            }
+
+            .tab-btn i {
+                font-size: 0.84rem;
+                flex-shrink: 0;
+            }
         }
 
         @media (max-width: 500px) {
             .tabs-grid {
-                gap: 8px;
-                padding: 8px;
-                border-radius: 14px;
+                gap: 5px;
+                padding: 5px;
+                border-radius: 12px;
             }
 
             .tab-btn {
-                padding: 14px 10px;
-                font-size: 0.85rem;
-                /* Mengecilkan teks sedikit agar muat dalam grid di HP */
-                gap: 6px;
-                flex-direction: column;
-                /* Icon dan teks bertumpuk vertikal di layar sangat kecil agar rapi */
+                min-height: 58px;
+                padding: 7px 3px;
+                font-size: 0.58rem;
+                line-height: 1.2;
             }
 
             .tab-btn i {
-                font-size: 1.2rem;
-                /* Memperbesar ukuran icon di mobile */
+                font-size: 0.8rem;
             }
         }
 
@@ -2052,11 +2071,13 @@
                 if (activeBtn) activeBtn.classList.add('active');
                 if (activeContent) activeContent.classList.add('active');
 
-                const firstCard = activeContent ? activeContent.querySelector('.card') : null;
-                if (firstCard) {
-                    const topOffset = window.innerWidth <= 768 ? 250 : 80;
-                    const elementTop = firstCard.getBoundingClientRect().top + window.scrollY - topOffset;
-                    window.scrollTo({ top: elementTop, behavior: 'smooth' });
+                if (window.innerWidth <= 768) {
+                    const firstCard = activeContent ? activeContent.querySelector('.card') : null;
+                    if (firstCard) {
+                        const topOffset = 250;
+                        const elementTop = firstCard.getBoundingClientRect().top + window.scrollY - topOffset;
+                        window.scrollTo({ top: elementTop, behavior: 'smooth' });
+                    }
                 }
 
                 const cards = activeContent ? activeContent.querySelectorAll('.card') : [];
