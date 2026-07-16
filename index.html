@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATC Batang - LPK Magang & Pelatihan ke Jepang</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 0;
+      animation: slideDown 0.6s ease-out;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      color: #2563eb;
+    }
+    .logo small {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: #64748b;
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #334155;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+
+    .nav-links .btn-whatsapp {
+      padding: 8px 20px;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      padding: 50px 0 60px;
+      background: linear-gradient(145deg, #f1f5f9 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(37, 99, 235, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 70% 80%, rgba(37, 211, 102, 0.03) 0%, transparent 60%);
+      animation: gradientShift 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+    .hero h1 .highlight {
+      color: #2563eb;
+      position: relative;
+    }
+    .hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 4px;
+      width: 100%;
+      height: 12px;
+      background: rgba(37, 99, 235, 0.15);
+      z-index: -1;
+      border-radius: 4px;
+      animation: expandWidth 0.8s ease-out 0.8s both;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #475569;
+      max-width: 90%;
+      margin-bottom: 28px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out 0.5s forwards;
+    }
+    .hero-badges span {
+      background: #e2e8f0;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1e293b;
+      transition: all 0.3s ease;
+    }
+    .hero-badges span:hover {
+      background: #2563eb;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .hero-badges span i {
+      margin-right: 6px;
+      color: #2563eb;
+    }
+    .hero-badges span:hover i {
+      color: #fff;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 28px;
+    }
+    .hero-stats div {
+      text-align: left;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    .hero-stats div:nth-child(1) { animation-delay: 0.6s; }
+    .hero-stats div:nth-child(2) { animation-delay: 0.8s; }
+    .hero-stats div:nth-child(3) { animation-delay: 1.0s; }
+
+    .hero-stats .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .hero-stats .label {
+      font-size: 0.9rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .hero-image {
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border-radius: 32px;
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      padding: 30px;
+      text-align: center;
+      animation: fadeInRight 0.8s ease-out 0.3s both, float 5s ease-in-out 1.2s infinite;
+    }
+    .hero-image .big-icon {
+      font-size: 4rem;
+      color: #2563eb;
+      margin-bottom: 12px;
+      animation: pulseIcon 2s ease-in-out infinite;
+    }
+    .hero-image h3 {
+      font-size: 1.4rem;
+      color: #0f172a;
+    }
+    .hero-image p {
+      color: #64748b;
+      font-size: 0.95rem;
+      max-width: 100%;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+    .section-sub {
+      text-align: center;
+      color: #64748b;
+      max-width: 700px;
+      margin: 0 auto 48px;
+      font-size: 1.1rem;
+    }
+
+    .catalogue-section {
+      padding: 60px 0 70px;
+      background: #ffffff;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      border-bottom: 2px solid #e9edf2;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 14px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      border-radius: 40px 40px 0 0;
+      transition: all 0.25s;
+      position: relative;
+    }
+    .tab-btn:hover {
+      color: #0f172a;
+      background: #f1f5f9;
+    }
+    .tab-btn.active {
+      color: #2563eb;
+      background: #eff6ff;
+    }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 20%;
+      width: 60%;
+      height: 4px;
+      background: #2563eb;
+      border-radius: 4px 4px 0 0;
+      animation: expandWidth 0.3s ease-out;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeUp 0.4s ease;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    .catalogue-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      border: 1px solid #edf2f7;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .card.revealed {
+      animation: cardEntrance 0.6s ease-out forwards;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.10);
+      border-color: #2563eb;
+    }
+
+    .card .icon {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 14px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .icon {
+      transform: scale(1.2) rotate(-5deg);
+    }
+    .card .icon.green { color: #22c55e; }
+    .card .icon.orange { color: #f59e0b; }
+    .card .icon.purple { color: #8b5cf6; }
+    .card .icon.red { color: #ef4444; }
+    .card .icon.pink { color: #ec4899; }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+    .card p {
+      color: #475569;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .card .price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin: 10px 0;
+    }
+    .card .price .note {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #64748b;
+    }
+    .card .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 40px;
+      margin: 4px 4px 4px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .card .badge::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: translateX(-100%) rotate(25deg);
+      animation: shimmer 3s infinite;
+    }
+    .card .badge.green { background: #dcfce7; color: #16a34a; }
+    .card .badge.orange { background: #fef3c7; color: #d97706; }
+    .card .badge.purple { background: #ede9fe; color: #7c3aed; }
+    .card .badge.red { background: #fee2e2; color: #dc2626; }
+
+    .card .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 8px;
+    }
+    .card .feature-list li {
+      padding: 4px 0;
+      font-size: 0.9rem;
+      color: #475569;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .card .feature-list li:last-child {
+      border-bottom: none;
+    }
+    .card .feature-list li i {
+      color: #22c55e;
+      margin-right: 8px;
+      width: 18px;
+    }
+
+    .card .detail {
+      font-size: 0.9rem;
+      color: #64748b;
+      border-top: 1px solid #ecf1f7;
+      padding-top: 14px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .about-section {
+      padding: 60px 0;
+      background: #f8fafc;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .about-item {
+      text-align: center;
+      padding: 28px 16px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #eef2f6;
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .about-item.revealed {
+      animation: cardEntrance 0.6s ease-out forwards;
+    }
+    .about-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+      border-color: #2563eb;
+    }
+    .about-item i {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 14px;
+      display: inline-block;
+      transition: transform 0.4s ease;
+    }
+    .about-item:hover i {
+      transform: scale(1.25) rotateY(180deg);
+    }
+    .about-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .about-item p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .testimoni-section {
+      padding: 60px 0;
+      background: #ffffff;
+    }
+
+    .testimoni-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .testimoni-card {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid #eef2f6;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+      position: relative;
+    }
+    .testimoni-card.revealed {
+      animation: cardEntrance 0.6s ease-out forwards;
+    }
+    .testimoni-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+      border-color: #2563eb;
+    }
+
+    .testimoni-card .quote-icon {
+      font-size: 1.8rem;
+      color: #dbeafe;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .testimoni-card:hover .quote-icon {
+      color: #2563eb;
+    }
+
+    .testimoni-card .testimoni-text {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .testimoni-card .testimoni-footer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid #edf2f7;
+      padding-top: 16px;
+    }
+
+    .testimoni-card .testimoni-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 2px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+    .testimoni-card:hover .testimoni-avatar {
+      border-color: #2563eb;
+      transform: scale(1.05);
+    }
+    .testimoni-card .testimoni-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .testimoni-card .testimoni-info h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 0;
+    }
+    .testimoni-card .testimoni-info span {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .testimoni-card .testimoni-stars {
+      color: #f59e0b;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-left: auto;
+    }
+
+    .alur-section {
+      padding: 60px 0;
+      background: #ffffff;
+    }
+
+    .alur-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px 24px;
+      margin-top: 20px;
+    }
+
+    .alur-step {
+      background: #f8fafc;
+      border-radius: 20px;
+      padding: 28px 20px 24px;
+      text-align: center;
+      border: 1px solid #eef2f6;
+      transition: all 0.3s ease;
+      position: relative;
+      margin-top: 22px;
+    }
+    .alur-step:hover {
+      background: #eff6ff;
+      border-color: #2563eb;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.10);
+    }
+
+    .alur-step .step-number {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2563eb;
+      color: #fff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    .alur-step:hover .step-number {
+      transform: translateX(-50%) scale(1.12);
+      background: #1d4ed8;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .alur-step .step-icon {
+      font-size: 2rem;
+      color: #2563eb;
+      margin-bottom: 10px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .alur-step:hover .step-icon {
+      transform: scale(1.15);
+    }
+
+    .alur-step h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+    .alur-step p {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    .alur-step .step-note {
+      font-size: 0.8rem;
+      color: #f59e0b;
+      background: #fef3c7;
+      padding: 4px 12px;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .syarat-section {
+      padding: 60px 0;
+      background: #f8fafc;
+    }
+
+    .syarat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .syarat-item {
+      background: #fff;
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 1px solid #eef2f6;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .syarat-item.revealed {
+      animation: cardEntrance 0.5s ease-out forwards;
+    }
+    .syarat-item:hover {
+      border-color: #2563eb;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transform: translateX(4px);
+    }
+    .syarat-item .num {
+      background: #dbeafe;
+      color: #2563eb;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .syarat-item span {
+      font-weight: 500;
+    }
+
+    .cta-section {
+      padding: 60px 0 70px;
+      background: #0f172a;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-section p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+    .cta-section .btn-whatsapp {
+      font-size: 1.2rem;
+      padding: 16px 44px;
+      position: relative;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .cta-section .btn-whatsapp i {
+      margin-right: 12px;
+    }
+    .cta-contact {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .cta-contact div {
+      color: #94a3b8;
+    }
+    .cta-contact div i {
+      color: #25d366;
+      margin-right: 8px;
+    }
+    .cta-contact div strong {
+      color: #fff;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      padding: 32px 0;
+      text-align: center;
+      border-top: 1px solid #1e293b;
+    }
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer a {
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+    footer a:hover {
+      color: #ffffff;
+    }
+    .footer-social a {
+      margin: 0 10px;
+      font-size: 1.2rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .footer-social a:hover {
+      transform: translateY(-3px);
+    }
+
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRight {
+      0% { opacity: 0; transform: translateX(40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes expandWidth {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulseIcon {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+    }
+
+    @keyframes gradientShift {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(5%, 5%) rotate(3deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
+      50% { box-shadow: 0 4px 24px rgba(37, 211, 102, 0.6), 0 0 40px rgba(37, 211, 102, 0.15); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(25deg); }
+      20% { transform: translateX(100%) rotate(25deg); }
+      100% { transform: translateX(100%) rotate(25deg); }
+    }
+
+    @keyframes cardEntrance {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+      .hero-badges {
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-flex {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 12px;
+      }
+      .tabs {
+        gap: 4px;
+      }
+      .tab-btn {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .cta-section h2 {
+        font-size: 1.8rem;
+      }
+      .catalogue-grid {
+        grid-template-columns: 1fr;
+      }
+      .alur-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .alur-grid {
+        grid-template-columns: 1fr;
+      }
+      .syarat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-flex">
+    <div class="logo">
+      ATC <span>Batang</span>
+      <small>Lembaga Pelatihan & Magang Jepang</small>
+    </div>
+    <div class="nav-links">
+      <a href="#programs">Program</a>
+      <a href="#alur">Alur</a>
+      <a href="#syarat">Syarat</a>
+      <a href="#about">Tentang</a>
+      <a href="#contact" class="btn btn-whatsapp btn-sm">
+        <i class="fab fa-whatsapp"></i> Hubungi Kami
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1>
+        Wujudkan Karirmu di <br />
+        <span class="highlight">Jepang</span> Bersama ATC Batang
+      </h1>
+      <p>
+        Lembaga pelatihan kerja terpercaya dengan program magang, Tokuteiginou (SSW),
+        dan pelatihan bahasa Jepang. Berpengalaman mengirimkan tenaga kerja ke Jepang
+        dengan biaya terjangkau dan sistem talangan.
+      </p>
+      <div class="hero-badges">
+        <span><i class="fas fa-check-circle"></i> Terlisensi</span>
+        <span><i class="fas fa-check-circle"></i> Biaya Talangan</span>
+        <span><i class="fas fa-check-circle"></i> SKTM 80%</span>
+        <span><i class="fas fa-check-circle"></i> Pendampingan</span>
+      </div>
+      <a href="#contact" class="btn btn-primary">
+        <i class="fas fa-chevron-right" style="margin-right: 8px;"></i> Daftar Sekarang
+      </a>
+      <div class="hero-stats">
+        <div><span class="number" data-target="500">0</span><span class="number">+</span><div class="label">Peserta Diberangkatkan</div></div>
+        <div><span class="number" data-target="100">0</span><span class="number">+</span><div class="label">Mitra Perusahaan</div></div>
+        <div><span class="number" data-target="95">0</span><span class="number">%</span><div class="label">Tingkat Kelulusan</div></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="big-icon"><i class="fas fa-graduation-cap"></i></div>
+      <h3>Belajar &bull; Berproses &bull; Sukses ke Jepang</h3>
+      <p><i class="fas fa-map-pin" style="color: #ef4444;"></i> ATC Batang &mdash; Pusat Pelatihan Kerja Jepang</p>
+      <div style="margin-top: 12px; display: flex; gap: 12px; justify-content: center;">
+        <span style="background: #fff; padding: 4px 14px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; color: #2563eb;">&#127471;&#127477; Magang</span>
+        <span style="background: #fff; padding: 4px 14px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; color: #2563eb;">&#127471;&#127477; Tokuteiginou</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="catalogue-section" id="programs">
+  <div class="container">
+    <h2 class="section-title reveal">Program & Layanan Kami</h2>
+    <p class="section-sub reveal">Pilih program yang sesuai dengan minat dan kualifikasi Anda.</p>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" data-tab="tab1">Magang Non-Kaigo</button>
+      <button class="tab-btn" data-tab="tab2">Tokuteiginou & Kaigo</button>
+      <button class="tab-btn" data-tab="tab3">Kelas Bahasa Jepang</button>
+      <button class="tab-btn" data-tab="tab4">Biaya & Fasilitas</button>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+      <div class="catalogue-grid">
+        <div class="card" data-delay="0">
+          <div class="icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Magang Job Non-Kaigo</h3>
+          <p>Program magang kerja di Jepang untuk berbagai bidang industri (manufaktur, konstruksi, otomotif, dll).</p>
+          <div class="price">Rp 35.000.000 <span class="note">(All-in)</span></div>
+          <div class="badge">+ Rp 600.000 Orientasi Awal</div>
+          <div class="badge green"><i class="fas fa-tag"></i> SKTM Bisa 80% Talangan</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Matching Job</li>
+            <li><i class="fas fa-check"></i> Passport & MCU Akhir (R)*</li>
+            <li><i class="fas fa-check"></i> Makan 3x, Asrama, Laundry</li>
+            <li><i class="fas fa-check"></i> Pemberkasan COE</li>
+            <li><i class="fas fa-check"></i> Tiket Pesawat & Koper</li>
+            <li><i class="fas fa-check"></i> Sayounara Party & Wisuda</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-clock"></i> Masa Renshu</span>
+            <span class="badge purple">Lolos N3 = Bonus &yen;90.000</span>
+          </div>
+        </div>
+        <div class="card" data-delay="100">
+          <div class="icon green"><i class="fas fa-gift"></i></div>
+          <h3>Bonus Lolos N3</h3>
+          <p>Insentif khusus bagi peserta yang berhasil lulus ujian N3.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> &#127873; <strong>&yen;20.000</strong> Sebelum Terbang</li>
+            <li><i class="fas fa-check"></i> &#127873; <strong>&yen;70.000</strong> Pas Tiba di Jepang</li>
+            <li><i class="fas fa-check"></i> FREE Uang Saku</li>
+          </ul>
+          <div class="badge" style="background: #fef3c7; color: #d97706;">&#128176; Total Bonus &yen;90.000</div>
+        </div>
+        <div class="card" data-delay="200">
+          <div class="icon purple"><i class="fas fa-plane"></i></div>
+          <h3>Fasilitas Keberangkatan</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Tiket Pesawat PP</li>
+            <li><i class="fas fa-check"></i> Akomodasi Bandara</li>
+            <li><i class="fas fa-check"></i> Prepare Apato & Isinya</li>
+            <li><i class="fas fa-check"></i> Perlengkapan Rumah Tangga</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-info-circle"></i> *R = Ditanggung dulu, dipotong dari gaji</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab2" class="tab-content">
+      <div class="catalogue-grid">
+        <div class="card" data-delay="0">
+          <div class="icon red"><i class="fas fa-user-md"></i></div>
+          <h3>Tokuteiginou & Magang Kaigo</h3>
+          <p>Khusus lulusan perawatan (keperawatan, perawat lansia) untuk program SSW dan magang kaigo.</p>
+          <div class="price">Rp 30.000.000 <span class="note">(All-in)</span></div>
+          <div class="badge">+ Rp 600.000 Orientasi Awal</div>
+          <div class="badge green"><i class="fas fa-tag"></i> SKTM Bisa 80% Talangan</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Matching Job</li>
+            <li><i class="fas fa-check"></i> Passport & MCU Akhir (R)*</li>
+            <li><i class="fas fa-check"></i> Ujian N4 (1x) & N3 (2x) (R)*</li>
+            <li><i class="fas fa-check"></i> Makan 3x, Asrama, Laundry</li>
+            <li><i class="fas fa-check"></i> Pemberkasan COE & Visa</li>
+            <li><i class="fas fa-check"></i> Tiket & Koper</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-clock"></i> Masa Renshu</span>
+            <span class="badge purple">Lolos N3 = Bonus &yen;90.000</span>
+          </div>
+        </div>
+        <div class="card" data-delay="100">
+          <div class="icon orange"><i class="fas fa-certificate"></i></div>
+          <h3>Untuk Jurusan Non-Perawat</h3>
+          <p>Tambahan biaya sertifikasi bagi lulusan non-perawat.</p>
+          <div class="price">+ Rp 2.500.000</div>
+          <p style="font-size: 0.9rem;">Sertifikasi selama 1 bulan termasuk akomodasi dan pelatihan.</p>
+          <div class="badge orange">Sertifikasi Profesi</div>
+          <div class="badge">Termasuk Akomodasi</div>
+        </div>
+        <div class="card" data-delay="200">
+          <div class="icon pink"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>Fasilitas Kaigo</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Pelatihan Perawatan Lansia</li>
+            <li><i class="fas fa-check"></i> Praktek Langsung</li>
+            <li><i class="fas fa-check"></i> Sertifikasi Kompetensi</li>
+            <li><i class="fas fa-check"></i> Pendampingan di Jepang</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-info-circle"></i> *R = Reimbursement, biaya bisa diklaim</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab3" class="tab-content">
+      <div class="catalogue-grid">
+        <div class="card" data-delay="0">
+          <div class="icon"><i class="fas fa-book-open"></i></div>
+          <h3>Kelas Bahasa Jepang</h3>
+          <p>Program pembelajaran bahasa Jepang dari dasar hingga level N4.</p>
+          <div class="badge">Kuota Terbatas</div>
+          <div class="badge green">Mulai Setelah Kuota Terpenuhi</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> Belajar Online 1-2 minggu</li>
+            <li><i class="fas fa-check"></i> Kelas Offline Tatap Muka</li>
+            <li><i class="fas fa-check"></i> Target 3 bulan sampai N4</li>
+            <li><i class="fas fa-check"></i> Bimbingan sampai lolos job</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-wallet"></i> Administrasi Rp 500.000</span>
+            <span class="badge purple">Bisa Dicicil</span>
+          </div>
+        </div>
+        <div class="card" data-delay="100">
+          <div class="icon green"><i class="fas fa-users"></i></div>
+          <h3>Materi Pembelajaran</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> &#127471;&#127477; Bahasa Jepang Dasar</li>
+            <li><i class="fas fa-check"></i> &#128172; Kaiwa (Percakapan)</li>
+            <li><i class="fas fa-check"></i> &#127908; Mensetsu (Interview)</li>
+            <li><i class="fas fa-check"></i> &#128221; Kanji & Bunpo</li>
+            <li><i class="fas fa-check"></i> &#127970; Budaya Kerja Jepang</li>
+          </ul>
+          <div class="badge" style="background: #fef3c7; color: #d97706;">&#11088; Target 3 Bulan</div>
+        </div>
+        <div class="card" data-delay="200">
+          <div class="icon orange"><i class="fas fa-phone-alt"></i></div>
+          <h3>Grup Orang Tua</h3>
+          <p>Koordinasi dan laporan perkembangan siswa melalui grup khusus.</p>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> &#128241; Laporan Harian via WhatsApp</li>
+            <li><i class="fas fa-check"></i> Foto Kegiatan Siswa</li>
+            <li><i class="fas fa-check"></i> Pantau Perkembangan</li>
+          </ul>
+          <div class="badge">Grup FMD Khusus</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab4" class="tab-content">
+      <div class="catalogue-grid">
+        <div class="card" data-delay="0">
+          <div class="icon"><i class="fas fa-calculator"></i></div>
+          <h3>Biaya Pribadi Siswa</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> <strong>Makan Mingguan:</strong> Rp 30.000 + Beras 2kg</li>
+            <li><i class="fas fa-check"></i> <strong>Uang Gedung:</strong> Rp 2.000.000 (4 bulan, bisa dicicil 3x)</li>
+            <li><i class="fas fa-check"></i> <strong>JFT A2 Test:</strong> Rp 550.000 (Bulan ke-4)</li>
+            <li><i class="fas fa-check"></i> <strong>MCU:</strong> Rp 500.000 (Bulan ke-4 / opsional awal)</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-utensils"></i> Masak bersama kelompok</span>
+          </div>
+        </div>
+        <div class="card" data-delay="100">
+          <div class="icon green"><i class="fas fa-dumbbell"></i></div>
+          <h3>Kegiatan Siswa</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> &#128218; Belajar Bahasa Jepang setiap hari</li>
+            <li><i class="fas fa-check"></i> &#127939; Olahraga rutin jaga stamina</li>
+            <li><i class="fas fa-check"></i> &#129504; Latihan mental & percaya diri</li>
+            <li><i class="fas fa-check"></i> &#9200; Disiplin & tanggung jawab</li>
+            <li><i class="fas fa-check"></i> &#127983; Belajar budaya & etika Jepang</li>
+          </ul>
+        </div>
+        <div class="card" data-delay="200">
+          <div class="icon purple"><i class="fas fa-users"></i></div>
+          <h3>Laporan Grup Orang Tua</h3>
+          <ul class="feature-list">
+            <li><i class="fas fa-check"></i> &#127749; Foto Sholat Subuh</li>
+            <li><i class="fas fa-check"></i> &#9728;&#65039; Foto Olahraga Pagi</li>
+            <li><i class="fas fa-check"></i> &#128214; Foto Belajar Siang</li>
+            <li><i class="fas fa-check"></i> &#127769; Foto Sholat Maghrib</li>
+            <li><i class="fas fa-check"></i> &#11088; Foto Sholat Isya</li>
+            <li><i class="fas fa-check"></i> &#127790; Foto Belajar Malam</li>
+          </ul>
+          <div class="detail">
+            <span><i class="fas fa-heart" style="color: #ef4444;"></i> Doa & dukungan orang tua</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alur-section" id="alur">
+  <div class="container">
+    <h2 class="section-title reveal">Alur Pendaftaran</h2>
+    <p class="section-sub reveal">Ikuti langkah-langkah mudah untuk memulai perjalanan karirmu ke Jepang.</p>
+
+    <div class="alur-grid">
+      <div class="alur-step">
+        <div class="step-number">1</div>
+        <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+        <h4>Pendaftaran Awal</h4>
+        <p>Kirim syarat dokumen (Ijazah, KK, KTP, Foto) & data diri.</p>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">2</div>
+        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+        <h4>Daftar Ulang</h4>
+        <p>Verifikasi berkas & pembayaran administrasi Rp 500.000.</p>
+        <span class="step-note">Rp 500.000</span>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">3</div>
+        <div class="step-icon"><i class="fab fa-whatsapp"></i></div>
+        <h4>Masuk Grup Belajar</h4>
+        <p>Bergabung di grup WhatsApp & mulai kelas online.</p>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">4</div>
+        <div class="step-icon"><i class="fas fa-school"></i></div>
+        <h4>Kelas Offline</h4>
+        <p>Setelah kuota terpenuhi, jadwal kelas tatap muka dimulai.</p>
+        <span class="step-note">Uang gedung bisa dicicil 3 bulan</span>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">5</div>
+        <div class="step-icon"><i class="fas fa-book"></i></div>
+        <h4>Fasilitas Belajar</h4>
+        <p>Pembelajaran bahasa Jepang bertahap sampai level N4.</p>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">6</div>
+        <div class="step-icon"><i class="fas fa-handshake"></i></div>
+        <h4>Matching Job</h4>
+        <p>Pencarian & penyesuaian perusahaan sesuai kebutuhan.</p>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">7</div>
+        <div class="step-icon"><i class="fas fa-file-signature"></i></div>
+        <h4>Kontrak & Dokumen</h4>
+        <p>Penandatanganan kontrak & pengurusan CoE hingga terbit.</p>
+      </div>
+      <div class="alur-step">
+        <div class="step-number">8</div>
+        <div class="step-icon"><i class="fas fa-plane-departure"></i></div>
+        <h4>Berangkat ke Jepang</h4>
+        <p>Persiapan keberangkatan & mulai bekerja di Jepang.</p>
+        <span class="step-note">&#127471;&#127477; Sukses!</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="syarat-section" id="syarat">
+  <div class="container">
+    <h2 class="section-title reveal">Syarat Mengikuti Program</h2>
+    <p class="section-sub reveal">Siapkan berkas-berkas berikut untuk pendaftaran.</p>
+
+    <div style="text-align: center; margin-bottom: 24px;" class="reveal">
+      <span class="badge" style="font-size: 1rem; padding: 8px 20px; background: #dbeafe; color: #1d4ed8; font-weight: 600; border-radius: 40px; display: inline-block;">
+        <i class="fas fa-file-pdf" style="color: #ef4444;"></i> Scan jadi 1 file PDF
+      </span>
+      <span class="badge green" style="font-size: 1rem; padding: 8px 20px; background: #dcfce7; color: #16a34a; font-weight: 600; border-radius: 40px; display: inline-block;">
+        <i class="fas fa-print"></i> Bawa FC saat datang
+      </span>
+    </div>
+
+    <div class="syarat-grid">
+      <div class="syarat-item" data-delay="0">
+        <div class="num">1</div>
+        <span>KTP</span>
+      </div>
+      <div class="syarat-item" data-delay="50">
+        <div class="num">2</div>
+        <span>Kartu Keluarga (KK)</span>
+      </div>
+      <div class="syarat-item" data-delay="100">
+        <div class="num">3</div>
+        <span>Akta Kelahiran</span>
+      </div>
+      <div class="syarat-item" data-delay="150">
+        <div class="num">4</div>
+        <span>Ijazah SD</span>
+      </div>
+      <div class="syarat-item" data-delay="200">
+        <div class="num">5</div>
+        <span>Ijazah SMP</span>
+      </div>
+      <div class="syarat-item" data-delay="250">
+        <div class="num">6</div>
+        <span>Ijazah SMA / SMK</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px; padding: 16px; background: #fef3c7; border-radius: 16px; max-width: 600px; margin-left: auto; margin-right: auto;" class="reveal">
+      <i class="fas fa-upload" style="color: #2563eb; margin-right: 8px;"></i>
+      <i class="fas fa-paper-plane" style="color: #2563eb; margin-right: 8px;"></i>
+      <strong>Setelah di Scan / Foto kirim ke admin.</strong>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <h2 class="section-title reveal">Mengapa Memilih ATC Batang?</h2>
+    <p class="section-sub reveal">Kami berkomitmen memberikan pelayanan terbaik untuk masa depan Anda.</p>
+    <div class="about-grid">
+      <div class="about-item" data-delay="0">
+        <i class="fas fa-certificate"></i>
+        <h4>Terlisensi & Terpercaya</h4>
+        <p>Berizin resmi dan berpengalaman mengirimkan tenaga kerja ke Jepang.</p>
+      </div>
+      <div class="about-item" data-delay="100">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h4>Biaya Talangan</h4>
+        <p>Biaya ditanggung dulu, dibayar setelah bekerja di Jepang.</p>
+      </div>
+      <div class="about-item" data-delay="200">
+        <i class="fas fa-percent"></i>
+        <h4>SKTM 80% Talangan</h4>
+        <p>Khusus pemegang Kartu SKTM bisa 80% talangan tanpa jaminan.</p>
+      </div>
+      <div class="about-item" data-delay="300">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h4>Pendampingan Penuh</h4>
+        <p>Dari pendaftaran sampai bekerja di Jepang, selalu didampingi.</p>
+      </div>
+      <div class="about-item" data-delay="400">
+        <i class="fas fa-users"></i>
+        <h4>Grup Orang Tua</h4>
+        <p>Laporan harian kegiatan siswa untuk orang tua/wali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimoni-section">
+  <div class="container">
+    <h2 class="section-title reveal">Apa Kata Mereka?</h2>
+    <p class="section-sub reveal">Pengalaman alumni yang telah sukses bersama ATC Batang.</p>
+
+    <div class="testimoni-grid">
+      <div class="testimoni-card" data-delay="0">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimoni-text">"Alhamdulillah, berkat bimbingan ATC Batang saya bisa bekerja di Jepang. Prosesnya cepat, pengajarnya sabar, dan biayanya terjangkau. Sangat recommended!"</p>
+        <div class="testimoni-footer">
+          <div class="testimoni-avatar"><img src="https://i.pravatar.cc/150?u=ahmad" alt="Ahmad Rizal" loading="lazy" /></div>
+          <div class="testimoni-info">
+            <h4>Ahmad Rizal</h4>
+            <span>Magang Manufaktur, Osaka</span>
+          </div>
+          <div class="testimoni-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+
+      <div class="testimoni-card" data-delay="100">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimoni-text">"Dari nol bisa bahasa Jepang sampai lolos N4. Guru-gurunya profesional dan caring banget. Sekarang saya sudah setahun di Jepang. Terima kasih ATC Batang!"</p>
+        <div class="testimoni-footer">
+          <div class="testimoni-avatar"><img src="https://i.pravatar.cc/150?u=siti" alt="Siti Nurhaliza" loading="lazy" /></div>
+          <div class="testimoni-info">
+            <h4>Siti Nurhaliza</h4>
+            <span>Tokuteiginou Kaigo, Tokyo</span>
+          </div>
+          <div class="testimoni-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+
+      <div class="testimoni-card" data-delay="200">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimoni-text">"Awalnya ragu karena biaya, tapi ternyata ada sistem talangan. Sekarang saya sudah bekerja dan gajinya lumayan. Terima kasih ATC Batang sudah membantu saya."</p>
+        <div class="testimoni-footer">
+          <div class="testimoni-avatar"><img src="https://i.pravatar.cc/150?u=dimas" alt="Dimas Prasetyo" loading="lazy" /></div>
+          <div class="testimoni-info">
+            <h4>Dimas Prasetyo</h4>
+            <span>SSW Konstruksi, Nagoya</span>
+          </div>
+          <div class="testimoni-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        </div>
+      </div>
+
+      <div class="testimoni-card" data-delay="300">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimoni-text">"Orang tua juga dikasih grup laporan harian, jadi tenang. Saya betah belajar di sini, suasananya kekeluargaan banget. Sukses terus ATC Batang!"</p>
+        <div class="testimoni-footer">
+          <div class="testimoni-avatar"><img src="https://i.pravatar.cc/150?u=rina" alt="Rina Fitriani" loading="lazy" /></div>
+          <div class="testimoni-info">
+            <h4>Rina Fitriani</h4>
+            <span>Magang Perhotelan, Kyoto</span>
+          </div>
+          <div class="testimoni-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+
+      <div class="testimoni-card" data-delay="400">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimoni-text">"Pelatihan mental dan disiplinnya kuat banget. Sampai di Jepang saya sudah siap karena terbiasa dengan budaya kerja dari ATC. Sangat berkesan!"</p>
+        <div class="testimoni-footer">
+          <div class="testimoni-avatar"><img src="https://i.pravatar.cc/150?u=budi" alt="Budi Ariyanto" loading="lazy" /></div>
+          <div class="testimoni-info">
+            <h4>Budi Ariyanto</h4>
+            <span>Magang Otomotif, Hiroshima</span>
+          </div>
+          <div class="testimoni-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+
+      <div class="testimoni-card" data-delay="500">
+        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <p class="testimoni-text">"Gak nyangka bisa tembus SSW pertanian. Pelatihan di ATC Batang bener-bener prepare kita dari nol sampai siap terbang. Makasih banyak!"</p>
+        <div class="testimoni-footer">
+          <div class="testimoni-avatar"><img src="https://i.pravatar.cc/150?u=fajar" alt="Fajar Wicaksono" loading="lazy" /></div>
+          <div class="testimoni-info">
+            <h4>Fajar Wicaksono</h4>
+            <span>SSW Pertanian, Hokkaido</span>
+          </div>
+          <div class="testimoni-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2 class="reveal">Siap Memulai Perjalananmu?</h2>
+    <p class="reveal">Konsultasikan dengan kami secara gratis. Tim kami siap membantu 24 jam.</p>
+    <a href="https://wa.me/6285166444407?text=Halo%20ATC%20Batang%2C%20saya%20ingin%20konsultasi%20program%20magang%20ke%20Jepang."
+       target="_blank"
+       class="btn btn-whatsapp reveal">
+      <i class="fab fa-whatsapp"></i> Hubungi Kami via WhatsApp
+    </a>
+    <div class="cta-contact">
+      <div><i class="fas fa-phone"></i> <strong>0851-6644-4407</strong></div>
+      <div><i class="fas fa-map-pin" style="color: #ef4444;"></i> ATC Batang</div>
+      <div><i class="fas fa-clock"></i> Senin - Sabtu, 08:00 - 17:00</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      &copy; 2026 ATC Batang. All rights reserved.
+      <br><span style="font-size: 0.8rem;">Belajar &bull; Berproses &bull; Sukses ke Jepang</span>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    function activateTab(tabId) {
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      const activeContent = document.getElementById(tabId);
+      if (activeBtn) activeBtn.classList.add('active');
+      if (activeContent) activeContent.classList.add('active');
+
+      const cards = activeContent ? activeContent.querySelectorAll('.card') : [];
+      cards.forEach((card, index) => {
+        card.classList.remove('revealed');
+        void card.offsetWidth;
+        card.style.animationDelay = (index * 100) + 'ms';
+        card.classList.add('revealed');
+      });
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const tabId = this.getAttribute('data-tab');
+        activateTab(tabId);
+      });
+    });
+
+    const firstActiveBtn = document.querySelector('.tab-btn.active');
+    if (firstActiveBtn) {
+      const defaultTab = firstActiveBtn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      const defaultContent = document.getElementById(defaultTab);
+      if (defaultContent) defaultContent.classList.add('active');
+      const cards = defaultContent ? defaultContent.querySelectorAll('.card') : [];
+      cards.forEach((card, index) => {
+        card.style.animationDelay = (index * 100) + 'ms';
+        card.classList.add('revealed');
+      });
+    }
+  })();
+</script>
+
+<script>
+  document.querySelectorAll('.nav-links a[href^="#"], .btn-primary[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+<script>
+  (function() {
+    const revealElements = document.querySelectorAll(
+      '.reveal, .about-item, .card, .syarat-item, .alur-step, .testimoni-card'
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = parseInt(el.getAttribute('data-delay')) || 0;
+          setTimeout(() => {
+            if (el.classList.contains('card')) {
+              if (!el.classList.contains('revealed')) {
+                el.classList.add('revealed');
+              }
+            } else if (el.classList.contains('about-item') || el.classList.contains('syarat-item') || el.classList.contains('alur-step') || el.classList.contains('testimoni-card')) {
+              el.classList.add('revealed');
+            } else {
+              el.classList.add('visible');
+            }
+          }, delay);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    const numberEls = document.querySelectorAll('.hero-stats .number[data-target]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          const duration = 1500;
+          const startTime = performance.now();
+
+          function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = current;
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            } else {
+              el.textContent = target;
+            }
+          }
+          requestAnimationFrame(update);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    numberEls.forEach(el => counterObserver.observe(el));
+  })();
+</script>
+
+</body>
+</html>
