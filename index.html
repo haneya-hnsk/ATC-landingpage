@@ -417,39 +417,114 @@
             padding-bottom: 4px;
         }
 
+        /* --- NEW INTERACTIVE 2x2 GRID TABS --- */
+
+        /* Pembatas lebar maksimal agar proporsi di desktop tetap pas dan rapi */
+        .tabs-wrapper {
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            padding: 0 16px;
+            width: 100%;
+        }
+
+        /* Container utama diubah menjadi Grid 2x2 */
+        .tabs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Membagi 2 kolom sama rata */
+            gap: 10px;
+            /* Jarak antar tombol */
+            background: #f1f5f9;
+            /* Background dasar panel abu-abu lembut */
+            padding: 10px;
+            border-radius: 16px;
+            /* Sudut panel yang membulat modern */
+            border: 1px solid #e2e8f0;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Gaya tombol tab berukuran besar & taktil */
         .tab-btn {
             background: transparent;
             border: none;
-            padding: 14px 24px;
+            padding: 16px 20px;
             font-size: 0.95rem;
             font-weight: 600;
             color: #64748b;
+            /* Warna teks abu-abu elegan */
             cursor: pointer;
-            border-radius: 40px 40px 0 0;
-            transition: all 0.25s;
-            position: relative;
+            border-radius: 12px;
+            /* Sudut tombol melengkung halus */
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Memastikan teks & icon berada di tengah */
+            gap: 10px;
+            text-align: center;
         }
 
+        /* Efek Icon */
+        .tab-btn i {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        /* Hover State (Saat diarahkan mouse) */
         .tab-btn:hover {
             color: #0f172a;
-            background: #f1f5f9;
+            background: rgba(255, 255, 255, 0.4);
+            /* Efek highlight transparan */
         }
 
-        .tab-btn.active {
+        .tab-btn:hover i {
             color: #2563eb;
-            background: #eff6ff;
+            transform: scale(1.08);
         }
 
+        /* Active State (Tombol yang sedang terpilih / menyala) */
+        .tab-btn.active {
+            background: #ffffff;
+            /* Berubah menjadi putih solid menonjol */
+            color: #2563eb;
+            /* Warna teks biru utama */
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05),
+                0 1px 3px rgba(0, 0, 0, 0.02);
+            /* Efek bayangan timbul */
+        }
+
+        .tab-btn.active i {
+            color: #2563eb;
+            transform: scale(1.08);
+        }
+
+        /* Menghapus indikator garis bawah (jika ada sisa style lama) */
         .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 20%;
-            width: 60%;
-            height: 4px;
-            background: #2563eb;
-            border-radius: 4px 4px 0 0;
-            animation: expandWidth 0.3s ease-out;
+            display: none;
+        }
+
+        /* --- Penyesuaian Responsif Layar Kecil (Mobile) --- */
+        @media (max-width: 500px) {
+            .tabs-grid {
+                gap: 8px;
+                padding: 8px;
+                border-radius: 14px;
+            }
+
+            .tab-btn {
+                padding: 14px 10px;
+                font-size: 0.85rem;
+                /* Mengecilkan teks sedikit agar muat dalam grid di HP */
+                gap: 6px;
+                flex-direction: column;
+                /* Icon dan teks bertumpuk vertikal di layar sangat kecil agar rapi */
+            }
+
+            .tab-btn i {
+                font-size: 1.2rem;
+                /* Memperbesar ukuran icon di mobile */
+            }
         }
 
         .tab-content {
@@ -1454,13 +1529,22 @@
             <h2 class="section-title reveal">Program & Layanan Kami</h2>
             <p class="section-sub reveal">Pilih program yang sesuai dengan minat dan kualifikasi Anda.</p>
 
-            <div class="tabs reveal">
-                <button class="tab-btn active" data-tab="tab1">Magang Non-Kaigo</button>
-                <button class="tab-btn" data-tab="tab2">Tokuteiginou & Kaigo</button>
-                <button class="tab-btn" data-tab="tab3">Kelas Bahasa Jepang</button>
-                <button class="tab-btn" data-tab="tab4">Biaya & Fasilitas</button>
+            <div class="tabs-wrapper reveal">
+                <div class="tabs-grid">
+                    <button class="tab-btn active" data-tab="tab1">
+                        <i class="fas fa-user-graduate"></i> Magang Non-Kaigo
+                    </button>
+                    <button class="tab-btn" data-tab="tab2">
+                        <i class="fas fa-hand-holding-heart"></i> Tokuteiginou & Kaigo
+                    </button>
+                    <button class="tab-btn" data-tab="tab3">
+                        <i class="fas fa-language"></i> Kelas Bahasa Jepang
+                    </button>
+                    <button class="tab-btn" data-tab="tab4">
+                        <i class="fas fa-wallet"></i> Biaya & Fasilitas
+                    </button>
+                </div>
             </div>
-
             <div id="tab1" class="tab-content active">
                 <div class="catalogue-grid">
                     <div class="card" data-delay="0">
